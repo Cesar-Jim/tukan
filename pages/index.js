@@ -1,9 +1,12 @@
 import { Flex } from '@chakra-ui/react';
 import Head from 'next/head';
 
+import Form from '../components/form/Form';
+import Title from '../components/heading/Title';
+
 export default function Home() {
   return (
-    <div>
+    <>
       <Head>
         <title>Tukan</title>
         <meta
@@ -12,15 +15,8 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <Flex
-        as="main"
-        fontFamily="tukan.regular"
-        fontWeight="regular"
-        fontSize="tukan.md"
-      >
-        TEST
-      </Flex>
-    </div>
+      <Title text="Banxico API Chart Visualizer" />
+      <Form />
+    </>
   );
 }

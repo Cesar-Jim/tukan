@@ -29,7 +29,6 @@ const GlobalReset = ({ children }) => {
               'Segoe UI Emoji', 'Segoe UI Symbol', 'Cormorant';
             margin: 0;
             max-width: 1328px;
-            border: 1px solid black;
             margin: 0 auto;
           }
 
