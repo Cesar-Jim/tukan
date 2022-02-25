@@ -1,9 +1,4 @@
 const typography = {
-  fonts: {
-    copy: 'Darker Grotesque',
-    logo: 'Cormorant',
-  },
-
   fontWeights: {
     regular: 400,
     medium: 500,
