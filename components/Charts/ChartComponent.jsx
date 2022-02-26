@@ -11,8 +11,9 @@ import {
   Legend,
 } from 'chart.js';
 import { Line, Bar } from 'react-chartjs-2';
-import { Radio, RadioGroup, Stack } from '@chakra-ui/react';
+import { Button, Flex, Radio, RadioGroup, Stack } from '@chakra-ui/react';
 import AppContext from '../../context/context';
+import downloadImage from '../../utils/save-image';
 
 const ChartComponent = ({ title, subtitle, chartData }) => {
   ChartJS.register(
@@ -62,23 +63,49 @@ const ChartComponent = ({ title, subtitle, chartData }) => {
     setTypeOfChart(newChartType);
   };
 
+  const handleDownloadImage = () => {
+    downloadImage();
+  };
+
   return (
     <>
       <RadioGroup defaultValue="1" m="8px 0 24px 0">
-        <Stack spacing={4} direction="row" justifyContent="center">
-          <Radio value="1" onClick={() => handleChartTypeChange('Line')}>
-            Line
-          </Radio>
-          <Radio value="2" onClick={() => handleChartTypeChange('Bar')}>
-            Bar
-          </Radio>
-        </Stack>
+        <Flex flexDir="column">
+          <Stack spacing={4} direction="row" justifyContent="center">
+            <Radio value="1" onClick={() => handleChartTypeChange('Line')}>
+              Line
+            </Radio>
+            <Radio value="2" onClick={() => handleChartTypeChange('Bar')}>
+              Bar
+            </Radio>
+          </Stack>
+          <Button
+            type="submit"
+            m="24px auto 0 auto"
+            colorScheme="twitter"
+            onClick={handleDownloadImage}
+          >
+            Save Chart Image
+          </Button>
+        </Flex>
       </RadioGroup>
       {typeOfChart === 'Line' && (
-        <Line options={options} data={data} width={700} height={300} />
+        <Line
+          id="canvas-chart"
+          options={options}
+          data={data}
+          width={700}
+          height={300}
+        />
       )}
       {typeOfChart === 'Bar' && (
-        <Bar options={options} data={data} width={700} height={300} />
+        <Bar
+          id="canvas-chart"
+          options={options}
+          data={data}
+          width={700}
+          height={300}
+        />
       )}
     </>
   );
