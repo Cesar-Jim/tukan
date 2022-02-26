@@ -1,0 +1,4 @@
+export const SET_DATA_STATE = 'SET_DATA_STATE';
+export const GET_DATA_STATE = 'GET_DATA_STATE';
+export const SET_ERROR_STATE = 'SET_ERROR_STATE';
+export const GET_ERROR_STATE = 'GET_ERROR_STATE';
