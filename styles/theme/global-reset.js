@@ -30,6 +30,9 @@ const GlobalReset = ({ children }) => {
             margin: 0;
             max-width: 1328px;
             margin: 0 auto;
+            background: #f9f9f9 url('/static/images/background-image.svg');
+            background-repeat: no-repeat;
+            background-position: top 0px left 120px;
           }
 
           /* Render the main element consistently in IE. */

@@ -68,6 +68,7 @@ const Form = () => {
             ref={tokenInput}
             required
             fontSize={['.6rem', '.7rem', '.8rem', '1rem']}
+            borderColor="gray.300"
           />
           <FormHelperText>
             Please type your Banxico token. Get one{' '}
@@ -94,6 +95,7 @@ const Form = () => {
             ref={seriesInput}
             required
             fontSize={['.6rem', '.7rem', '.8rem', '1rem']}
+            borderColor="gray.300"
           />
           <FormHelperText>
             Please type a series ID (example: SF61745,SP68257).
