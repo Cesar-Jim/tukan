@@ -15,9 +15,9 @@ export default function Home() {
           name="description"
           content="Visualizador de gráficas del Banco de México"
         />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
-      <Flex flexDir="column">
+      <Flex className="container" flexDir="column">
         <Title text="Banxico API Chart Visualizer" />
         <Form />
         <ChartsCollection />
