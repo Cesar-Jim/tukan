@@ -45,14 +45,6 @@ const AppState = (props) => {
     dispatch({ type: 'GET_LOADING_STATE', payload: state.isLoading });
   }
 
-  useEffect(() => {
-    console.log('DATA', state.data);
-  }, [state.data]);
-
-  useEffect(() => {
-    console.log('ERROR', state.error);
-  }, [state.error]);
-
   const value = {
     data: state.data,
     error: state.error,

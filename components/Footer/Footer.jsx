@@ -10,7 +10,7 @@ const Footer = () => {
       position="absolute"
       left={0}
       right={0}
-      bottom={-300}
+      bottom={-400}
     >
       <Text fontSize="xs">Designed & Coded by César Jiménez</Text>
       <Text fontSize="xs">

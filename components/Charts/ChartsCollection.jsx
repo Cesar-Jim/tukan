@@ -9,7 +9,7 @@ import {
   Spinner,
 } from '@chakra-ui/react';
 
-import LineChart from './LineChart';
+import ChartComponent from './ChartComponent';
 import AppContext from '../../context/context';
 
 const ChartsCollection = () => {
@@ -33,7 +33,7 @@ const ChartsCollection = () => {
               ? data.map((chart) => {
                   return <Tab key={chart.idSerie}>{chart.idSerie}</Tab>;
                 })
-              : 'Charts will show up down below when data is available. Go ahead and fetch data.'}
+              : 'Charts will show up down below as individual tabs when data is available. Go ahead and fetch data.'}
           </TabList>
 
           <TabPanels>
@@ -41,7 +41,7 @@ const ChartsCollection = () => {
               data.map((chart) => {
                 return (
                   <TabPanel key={chart.idSerie}>
-                    <LineChart
+                    <ChartComponent
                       chartData={chart.datos}
                       title={`${chart.idSerie} - ${chart.titulo}`}
                       subtitle={`${chart.idSerie}`}
