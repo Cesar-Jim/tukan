@@ -74,6 +74,7 @@ const Form = () => {
             <a
               href="https://www.banxico.org.mx/SieAPIRest/service/v1/token"
               target={'_blank'}
+              rel="noreferrer"
               style={{
                 color: 'blue',
                 textDecoration: 'underline',
