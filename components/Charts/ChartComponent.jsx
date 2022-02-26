@@ -63,8 +63,10 @@ const ChartComponent = ({ title, subtitle, chartData }) => {
     setTypeOfChart(newChartType);
   };
 
-  const handleDownloadImage = () => {
-    downloadImage();
+  const handleDownloadImage = (title) => {
+    const filename = typeOfChart === 'Line' ? `${title}-line` : `${title}-bar`;
+
+    downloadImage(filename);
   };
 
   return (
@@ -83,7 +85,7 @@ const ChartComponent = ({ title, subtitle, chartData }) => {
             type="submit"
             m="24px auto 0 auto"
             colorScheme="twitter"
-            onClick={handleDownloadImage}
+            onClick={() => handleDownloadImage(title)}
           >
             Save Chart Image
           </Button>
@@ -91,7 +93,7 @@ const ChartComponent = ({ title, subtitle, chartData }) => {
       </RadioGroup>
       {typeOfChart === 'Line' && (
         <Line
-          id="canvas-chart"
+          id={`${title}-line`}
           options={options}
           data={data}
           width={700}
@@ -100,7 +102,7 @@ const ChartComponent = ({ title, subtitle, chartData }) => {
       )}
       {typeOfChart === 'Bar' && (
         <Bar
-          id="canvas-chart"
+          id={`${title}-bar`}
           options={options}
           data={data}
           width={700}
