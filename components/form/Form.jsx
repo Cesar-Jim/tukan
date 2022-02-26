@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import {
   FormControl,
   FormLabel,
@@ -10,38 +10,43 @@ import {
   useToast,
 } from '@chakra-ui/react';
 import { retrieveChartData } from '../../utils/data-utilities-.js';
-import { createToast } from '../toast/create-toast.js';
+import { createToast } from '../../utils/create-toast.js';
+
+import AppContext from '../../context/context.js';
 
 const Form = () => {
-  const [data, setData] = useState([]);
   const tokenInput = useRef();
   const seriesInput = useRef();
+  const { data, fetchDataApi, setErrorInState, error } = useContext(AppContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const token = '' || tokenInput.current.value.toString().trim();
     const series = seriesInput.current.value.toString().trim();
-    const data = await retrieveChartData(series, token);
-    console.log(data);
 
-    if (!data.error) {
-      setData(data);
-      return createToast({
-        title: 'Éxito',
-        description: '¡Los datos se descargaron correctamente!',
-        status: 'success',
-        duration: 3000,
-      });
-    } else {
+    await fetchDataApi(series, token);
+  };
+
+  useEffect(() => {
+    if (error) {
       return createToast({
         title: 'Error',
-        description: data.error.mensaje + ' ' + data.error.detalle,
+        description: error?.mensaje + ' ' + error?.detalle + ' ' + error?.url,
         status: 'error',
         duration: 5000,
       });
     }
-  };
+
+    if (data) {
+      return createToast({
+        title: 'Éxito',
+        description: 'Datos descargados correctamente.',
+        status: 'success',
+        duration: 3000,
+      });
+    }
+  }, [error, data]);
 
   return (
     <Flex
