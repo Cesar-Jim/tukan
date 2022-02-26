@@ -13,7 +13,7 @@ import { retrieveChartData } from '../../utils/data-utilities-.js';
 import { createToast } from '../../utils/create-toast.js';
 
 import AppContext from '../../context/context.js';
-import LineChart from '../Charts/LineChart.jsx';
+import LineChart from '../Charts/ChartComponent.jsx';
 
 const Form = () => {
   const tokenInput = useRef();
@@ -35,7 +35,7 @@ const Form = () => {
   useEffect(() => {
     if (error) {
       return createToast({
-        title: 'Error',
+        title: 'Error!',
         description: `${error?.mensaje} ${error?.detalle} ${error?.url}`,
         status: 'error',
         duration: 5000,
@@ -44,10 +44,10 @@ const Form = () => {
 
     if (data) {
       return createToast({
-        title: 'Éxito',
-        description: 'Datos descargados correctamente.',
+        title: 'Success!',
+        description: 'Data was fetched from Banxico.',
         status: 'success',
-        duration: 3000,
+        duration: 5000,
       });
     }
   }, [error, data]);
@@ -98,10 +98,10 @@ const Form = () => {
           <FormHelperText>
             Please type a series ID (example: SF61745,SP68257).
           </FormHelperText>
+          <Button type="submit" mt="3rem" width="112px" colorScheme="twitter">
+            Fetch Data
+          </Button>
         </FormControl>
-        <Button type="submit" mt="3rem" width="112px" colorScheme="twitter">
-          Fetch Data
-        </Button>
       </form>
     </Flex>
   );
