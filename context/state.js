@@ -8,6 +8,7 @@ const AppState = (props) => {
   const initialState = {
     data: null,
     error: null,
+    isLoading: false,
   };
 
   const [state, dispatch] = useReducer(AppReducer, initialState);
@@ -18,7 +19,7 @@ const AppState = (props) => {
 
     if (!data.error) {
       dispatch({ type: 'SET_ERROR_STATE', payload: null });
-      dispatch({ type: 'SET_DATA_STATE', payload: data });
+      dispatch({ type: 'SET_DATA_STATE', payload: data.bmx.series });
     } else {
       dispatch({ type: 'SET_ERROR_STATE', payload: data.error });
     }
@@ -36,6 +37,14 @@ const AppState = (props) => {
     dispatch({ type: 'GET_ERROR_STATE', payload: state.error });
   }
 
+  function setIsLoadingInState(status) {
+    dispatch({ type: 'SET_LOADING_STATE', payload: status });
+  }
+
+  function getIsLoadingFromState() {
+    dispatch({ type: 'GET_LOADING_STATE', payload: state.isLoading });
+  }
+
   useEffect(() => {
     console.log('DATA', state.data);
   }, [state.data]);
@@ -47,10 +56,13 @@ const AppState = (props) => {
   const value = {
     data: state.data,
     error: state.error,
+    isLoading: state.isLoading,
     fetchDataApi,
     getDataFromState,
     setErrorInState,
     getErrorFromState,
+    setIsLoadingInState,
+    getIsLoadingFromState,
   };
 
   return (

@@ -15,7 +15,7 @@ export const retrieveChartData = async (dataSeries, userToken) => {
 
     const data = await response.json();
 
-    return data.bmx.series;
+    return data;
   } catch (error) {
     console.log('Error: ', error);
   }

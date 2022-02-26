@@ -10,7 +10,7 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 
-const LineChart = ({ title, xData }) => {
+const LineChart = ({ title, subtitle, chartData }) => {
   ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -32,37 +32,20 @@ const LineChart = ({ title, xData }) => {
         display: true,
         text: title,
       },
-      subtitle: {
-        display: true,
-        text: 'Test',
-      },
     },
   };
 
-  const labels = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-  ];
+  const labels = chartData ? chartData.map((point) => point.fecha) : [];
 
   const data = {
     labels,
     datasets: [
       {
-        label: 'Dataset 1',
-        data: [130, 100, 450, 220, 290, 120, 770],
+        label: subtitle,
+        fill: false,
+        data: chartData ? chartData.map((point) => point.dato) : [],
         borderColor: 'rgb(255, 99, 132)',
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
-      },
-      {
-        label: 'Dataset 2',
-        data: [100, 200, 300, 400, 230, 150, 578],
-        borderColor: 'rgb(53, 162, 235)',
-        backgroundColor: 'rgba(53, 162, 235, 0.5)',
       },
     ],
   };
