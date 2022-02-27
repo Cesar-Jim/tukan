@@ -45,7 +45,7 @@ const Form = () => {
     if (data) {
       return createToast({
         title: 'Success!',
-        description: 'Data was fetched from Banxico.',
+        description: 'Data successfully fetched from Banxico.',
         status: 'success',
         duration: 5000,
       });
