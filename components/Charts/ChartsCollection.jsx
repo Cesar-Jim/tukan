@@ -7,6 +7,7 @@ import {
   TabPanel,
   Flex,
   Spinner,
+  Text,
 } from '@chakra-ui/react';
 
 import ChartComponent from './ChartComponent';
@@ -25,7 +26,13 @@ const ChartsCollection = () => {
       justifyContent="center"
     >
       {isLoading ? (
-        <Spinner m="20% 0" />
+        <Spinner
+          m="20% 0"
+          color="blue.500"
+          size="xl"
+          thickness="4px"
+          speed="0.4s"
+        />
       ) : (
         <Tabs isFitted width="100%" m="48px 0">
           <TabList justifyContent="space-evenly" pb="8px">
@@ -50,8 +57,10 @@ const ChartsCollection = () => {
                 );
               })
             ) : (
-              <TabPanel textAlign="center" fontSize="1.75rem" fontWeight="thin">
-                <p>¯\_(ツ)_/¯</p>
+              <TabPanel textAlign="center" fontSize="2rem" fontWeight="regular">
+                <Text as="p" mt="24px">
+                  ¯\_(ツ)_/¯
+                </Text>
               </TabPanel>
             )}
           </TabPanels>
